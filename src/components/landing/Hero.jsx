@@ -93,7 +93,7 @@ export default function Hero() {
             Wgraj swoje zdjęcie, wybierz zabieg i w kilka sekund zobacz swoją transformację. Bezpiecznie, anonimowo, bez rejestracji.
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <button style={{ background: "#5a4a3a", color: "#fff", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "none", cursor: "pointer", transition: "all 0.2s" }}
+            <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} style={{ background: "#5a4a3a", color: "#fff", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "none", cursor: "pointer", transition: "all 0.2s" }}
               onMouseEnter={e => e.currentTarget.style.background = "#8B6E47"}
               onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
               Zamów Bezpłatne Demo
