@@ -13,7 +13,6 @@ export default function Home() {
     <div style={{ minHeight: "100vh", background: "#FAFAF8", color: "#2a2218" }}>
       <Navbar />
       <Hero />
-      <HowItWorks />
       <Solutions />
       <Stats />
       <Testimonials />
