@@ -39,10 +39,9 @@ export default function Navbar() {
         {/* Logo center */}
         <div onClick={() => scrollTo("hero")} style={{
           position: "absolute", left: "50%", transform: "translateX(-50%)",
-          fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.4rem",
-          color: "#5a4a3a", cursor: "pointer", letterSpacing: "0.02em"
+          cursor: "pointer"
         }}>
-          <span style={{ fontStyle: "italic", color: "#8B6E47" }}>AI</span>sthetic
+          <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699b669890489dbd9dbdfc53/8bb84d739_logo_aisthetic.png" alt="AIsthetic" style={{ height: 36, objectFit: "contain" }} />
         </div>
 
         {/* CTA right */}
