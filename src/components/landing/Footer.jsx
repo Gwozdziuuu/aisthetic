@@ -5,9 +5,7 @@ export default function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "3rem", marginBottom: "3rem", alignItems: "start" }} className="footer-grid">
           {/* Brand */}
           <div>
-            <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "1.6rem", fontWeight: 700, color: "#5a4a3a", letterSpacing: "0.02em", marginBottom: "1rem" }}>
-              <span style={{ fontStyle: "italic", color: "#8B6E47" }}>AI</span>sthetic
-            </div>
+            <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699b669890489dbd9dbdfc53/36ec17096_logo_aisthetic.png" alt="AIsthetic" style={{ height: 52, objectFit: "contain", marginBottom: "1rem" }} />
             <p style={{ fontSize: "0.875rem", color: "#999", lineHeight: 1.7, maxWidth: 260 }}>
               AI wizualizacja efektów zabiegów medycyny estetycznej. Twój wygląd. Twoja decyzja.
             </p>
