@@ -41,7 +41,7 @@ export default function Navbar() {
           position: "absolute", left: "50%", transform: "translateX(-50%)",
           cursor: "pointer"
         }}>
-          <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699b669890489dbd9dbdfc53/36ec17096_logo_aisthetic.png" alt="AIsthetic" style={{ height: 52, objectFit: "contain" }} />
+          <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699b669890489dbd9dbdfc53/36ec17096_logo_aisthetic.png" alt="AIsthetic" style={{ height: 72, objectFit: "contain" }} />
         </div>
 
         {/* CTA right */}
