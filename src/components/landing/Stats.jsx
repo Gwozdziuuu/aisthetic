@@ -22,9 +22,8 @@ function AnimatedNumber({ target, suffix = "" }) {
     }
   }, [inView, target]);
 
-  const prefix = target.match(/^[^\d]*/)?.[0] || "";
   const numStr = val.toLocaleString("pl-PL");
-  return <span ref={ref}>{prefix}{numStr}{suffix}</span>;
+  return <span ref={ref}>{numStr}{suffix}</span>;
 }
 
 const stats = [
@@ -38,22 +37,20 @@ export default function Stats() {
   const { ref, inView } = useInView(0.15);
 
   return (
-    <section style={{ padding: "6rem clamp(1.5rem,5vw,4rem)", position: "relative", overflow: "hidden" }}>
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(201,169,110,0.04) 0%, transparent 60%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", inset: 0, borderTop: "1px solid rgba(201,169,110,0.1)", borderBottom: "1px solid rgba(201,169,110,0.1)" }} />
-      <div ref={ref} style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "2rem" }}>
+    <section style={{ padding: "5rem clamp(1.5rem,5vw,4rem)", background: "#FAFAF8", borderTop: "1px solid rgba(139,110,71,0.1)", borderBottom: "1px solid rgba(139,110,71,0.1)" }}>
+      <div ref={ref} style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "2rem" }} className="stats-grid">
         {stats.map((s, i) => (
           <div key={i} style={{ textAlign: "center", opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(20px)", transition: `all 0.6s ease ${i * 0.1}s` }}>
-            <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 700, color: "#C9A96E", lineHeight: 1, marginBottom: "0.5rem" }}>
+            <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 600, color: "#8B6E47", lineHeight: 1, marginBottom: "0.5rem" }}>
               <AnimatedNumber target={s.value} suffix={s.suffix} />
             </div>
-            <div style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.875rem", color: "rgba(255,255,255,0.45)", letterSpacing: "0.03em" }}>{s.label}</div>
+            <div style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.85rem", color: "#999", letterSpacing: "0.02em" }}>{s.label}</div>
           </div>
         ))}
       </div>
       <style>{`
-        @media (max-width: 768px) {
-          section [style*="grid-template-columns: repeat(4,1fr)"] { grid-template-columns: repeat(2,1fr) !important; gap: 2.5rem !important; }
+        @media (max-width: 640px) {
+          .stats-grid { grid-template-columns: repeat(2,1fr) !important; gap: 2.5rem !important; }
         }
       `}</style>
     </section>

@@ -11,7 +11,7 @@ import Footer from "../components/landing/Footer";
 
 export default function Home() {
   return (
-    <div style={{ minHeight: "100vh", background: "#080808", color: "#fff" }}>
+    <div style={{ minHeight: "100vh", background: "#FAFAF8", color: "#2a2218" }}>
       <Navbar />
       <Hero />
       <HowItWorks />
