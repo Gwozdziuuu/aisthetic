@@ -18,54 +18,61 @@ export default function Navbar() {
   return (
     <nav style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled ? "rgba(8,8,8,0.95)" : "transparent",
-      backdropFilter: scrolled ? "blur(20px)" : "none",
-      borderBottom: scrolled ? "1px solid rgba(201,169,110,0.15)" : "none",
+      background: scrolled ? "rgba(250,250,248,0.96)" : "rgba(250,250,248,0.85)",
+      backdropFilter: "blur(20px)",
+      borderBottom: "1px solid rgba(139,110,71,0.12)",
       transition: "all 0.4s ease",
       padding: "0 clamp(1.5rem, 5vw, 4rem)",
       fontFamily: "'Inter', sans-serif"
     }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
-        <div style={{ fontSize: "1.5rem", fontFamily: "'Playfair Display', serif", fontWeight: 600, letterSpacing: "0.05em", color: "#C9A96E", cursor: "pointer" }} onClick={() => scrollTo("hero")}>
-          Aisthetic
+      <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
+        {/* Hamburger left */}
+        <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "none", border: "none", color: "#5a4a3a", cursor: "pointer", padding: 4, display: "flex", alignItems: "center", gap: 8 }} className="hamburger-btn">
+          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <line x1="2" y1="5" x2="18" y2="5"/>
+            <line x1="2" y1="10" x2="18" y2="10"/>
+            <line x1="2" y1="15" x2="18" y2="15"/>
+          </svg>
+          <span style={{ fontSize: "0.875rem", fontWeight: 500, letterSpacing: "0.02em" }}>Menu</span>
+        </button>
+
+        {/* Logo center */}
+        <div onClick={() => scrollTo("hero")} style={{
+          position: "absolute", left: "50%", transform: "translateX(-50%)",
+          fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.4rem",
+          color: "#5a4a3a", cursor: "pointer", letterSpacing: "0.02em"
+        }}>
+          <span style={{ fontStyle: "italic", color: "#8B6E47" }}>AI</span>sthetic
         </div>
-        <div style={{ display: "flex", gap: "2rem", alignItems: "center" }} className="nav-links-desktop">
-          {[["Jak to działa", "how-it-works"], ["Rozwiązania", "solutions"], ["Opinie", "testimonials"], ["Zabiegi", "treatments"]].map(([label, id]) => (
-            <button key={id} onClick={() => scrollTo(id)} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.7)", fontSize: "0.875rem", cursor: "pointer", fontFamily: "'Inter', sans-serif", fontWeight: 400, letterSpacing: "0.03em", transition: "color 0.2s" }}
-              onMouseEnter={e => e.target.style.color = "#C9A96E"} onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.7)"}>
-              {label}
-            </button>
-          ))}
-        </div>
-        <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-          <button onClick={() => scrollTo("solutions")} style={{ background: "none", border: "1px solid rgba(201,169,110,0.4)", color: "#C9A96E", padding: "0.5rem 1.25rem", borderRadius: 4, fontSize: "0.8rem", cursor: "pointer", fontFamily: "'Inter', sans-serif", fontWeight: 500, letterSpacing: "0.05em", transition: "all 0.2s" }}
-            onMouseEnter={e => { e.target.style.background = "rgba(201,169,110,0.08)"; e.target.style.borderColor = "#C9A96E"; }} onMouseLeave={e => { e.target.style.background = "none"; e.target.style.borderColor = "rgba(201,169,110,0.4)"; }}>
-            DLA GABINETÓW
-          </button>
-          <button onClick={() => scrollTo("hero")} style={{ background: "linear-gradient(135deg, #C9A96E, #E8C98A)", color: "#080808", padding: "0.5rem 1.5rem", borderRadius: 4, fontSize: "0.8rem", cursor: "pointer", border: "none", fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: "0.05em", transition: "all 0.2s" }}
-            onMouseEnter={e => e.target.style.opacity = "0.9"} onMouseLeave={e => e.target.style.opacity = "1"}>
-            WYPRÓBUJ
-          </button>
-          <button onClick={() => setMenuOpen(!menuOpen)} style={{ display: "none", background: "none", border: "none", color: "#C9A96E", cursor: "pointer", padding: 4 }} className="hamburger">
-            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5"><line x1="2" y1="6" x2="20" y2="6"/><line x1="2" y1="12" x2="20" y2="12"/><line x1="2" y1="18" x2="20" y2="18"/></svg>
-          </button>
-        </div>
+
+        {/* CTA right */}
+        <button onClick={() => scrollTo("hero")} style={{
+          background: "#5a4a3a", color: "#fff",
+          padding: "0.5rem 1.25rem", borderRadius: 6,
+          fontSize: "0.8rem", cursor: "pointer", border: "none",
+          fontFamily: "'Inter', sans-serif", fontWeight: 500,
+          letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 6,
+          transition: "all 0.2s"
+        }}
+          onMouseEnter={e => e.currentTarget.style.background = "#8B6E47"}
+          onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
+          <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+          </svg>
+          Simulate Surgical Procedure
+        </button>
       </div>
+
+      {/* Dropdown menu */}
       {menuOpen && (
-        <div style={{ background: "rgba(8,8,8,0.98)", borderTop: "1px solid rgba(201,169,110,0.1)", padding: "1.5rem clamp(1.5rem,5vw,4rem)" }}>
-          {[["Jak to działa", "how-it-works"], ["Rozwiązania", "solutions"], ["Opinie", "testimonials"], ["Zabiegi", "treatments"]].map(([label, id]) => (
-            <button key={id} onClick={() => scrollTo(id)} style={{ display: "block", width: "100%", textAlign: "left", background: "none", border: "none", color: "rgba(255,255,255,0.8)", fontSize: "1rem", cursor: "pointer", fontFamily: "'Inter', sans-serif", padding: "0.75rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ background: "rgba(250,250,248,0.98)", borderTop: "1px solid rgba(139,110,71,0.1)", padding: "1rem clamp(1.5rem,5vw,4rem)" }}>
+          {[["Jak to działa", "how-it-works"], ["Rozwiązania", "solutions"], ["Opinie", "testimonials"], ["Zabiegi", "treatments"], ["Kontakt", "contact"]].map(([label, id]) => (
+            <button key={id} onClick={() => scrollTo(id)} style={{ display: "block", width: "100%", textAlign: "left", background: "none", border: "none", color: "#5a4a3a", fontSize: "0.95rem", cursor: "pointer", fontFamily: "'Inter', sans-serif", padding: "0.6rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
               {label}
             </button>
           ))}
         </div>
       )}
-      <style>{`
-        @media (max-width: 768px) {
-          .nav-links-desktop { display: none !important; }
-          .hamburger { display: flex !important; }
-        }
-      `}</style>
     </nav>
   );
 }
