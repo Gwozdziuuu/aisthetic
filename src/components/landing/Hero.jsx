@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const BEFORE_AFTER_CASES = [
+const CASES = [
   {
     label: "LOWER EYELID BLEPHAROPLASTY",
     before: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/e51368a7e_1g.png",
@@ -18,7 +18,7 @@ const BEFORE_AFTER_CASES = [
   },
 ];
 
-function BeforeAfterSlider({ before, after }) {
+function BeforeAfterSlider({ before, after, label }) {
   const [pos, setPos] = useState(50);
   const isDragging = useRef(false);
   const containerRef = useRef(null);
@@ -31,32 +31,31 @@ function BeforeAfterSlider({ before, after }) {
   };
 
   return (
-    <div
-      ref={containerRef}
-      style={{ position: "relative", overflow: "hidden", aspectRatio: "4/3", cursor: "ew-resize", userSelect: "none", borderRadius: 4, background: "#f5f5f0" }}
-      onMouseDown={e => { isDragging.current = true; updatePos(e.clientX); }}
-      onMouseMove={e => { if (isDragging.current) updatePos(e.clientX); }}
-      onMouseUp={() => isDragging.current = false}
-      onMouseLeave={() => isDragging.current = false}
-      onTouchStart={e => { isDragging.current = true; updatePos(e.touches[0].clientX); }}
-      onTouchMove={e => { if (isDragging.current) { e.preventDefault(); updatePos(e.touches[0].clientX); } }}
-      onTouchEnd={() => isDragging.current = false}
-    >
-      {/* AFTER image */}
-      <img src={after} alt="after" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-      {/* BEFORE image clipped */}
-      <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-        <img src={before} alt="before" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-      </div>
-      {/* Labels */}
-      <div style={{ position: "absolute", bottom: 14, left: 14, background: "rgba(255,255,255,0.9)", color: "#1a1a1a", fontSize: "0.65rem", fontFamily: "'Inter',sans-serif", letterSpacing: "0.12em", fontWeight: 600, padding: "5px 12px", borderRadius: 3 }}>BEFORE</div>
-      <div style={{ position: "absolute", bottom: 14, right: 14, background: "rgba(255,255,255,0.9)", color: "#1a1a1a", fontSize: "0.65rem", fontFamily: "'Inter',sans-serif", letterSpacing: "0.12em", fontWeight: 600, padding: "5px 12px", borderRadius: 3 }}>AFTER</div>
-      {/* Divider */}
-      <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: 1, background: "rgba(255,255,255,0.8)", transform: "translateX(-50%)", pointerEvents: "none" }}>
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,0.95)", border: "1px solid rgba(0,0,0,0.12)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}>
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-            <path d="M5 8l-3-3m0 0l3-3M2 5h12M11 8l3 3m0 0l-3 3M14 11H2" stroke="#5a4a3a" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
+    <div>
+      <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.65rem", letterSpacing: "0.18em", color: "#8B6E47", fontWeight: 600, marginBottom: "0.75rem", textTransform: "uppercase" }}>{label}</p>
+      <div
+        ref={containerRef}
+        style={{ position: "relative", overflow: "hidden", aspectRatio: "4/3", cursor: "ew-resize", userSelect: "none", borderRadius: 8, background: "#f0ede8" }}
+        onMouseDown={e => { isDragging.current = true; updatePos(e.clientX); }}
+        onMouseMove={e => { if (isDragging.current) updatePos(e.clientX); }}
+        onMouseUp={() => isDragging.current = false}
+        onMouseLeave={() => isDragging.current = false}
+        onTouchStart={e => { isDragging.current = true; updatePos(e.touches[0].clientX); }}
+        onTouchMove={e => { if (isDragging.current) { e.preventDefault(); updatePos(e.touches[0].clientX); } }}
+        onTouchEnd={() => isDragging.current = false}
+      >
+        <img src={after} alt="after" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
+          <img src={before} alt="before" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
+        <div style={{ position: "absolute", bottom: 14, left: 14, background: "rgba(255,255,255,0.92)", color: "#2a2218", fontSize: "0.6rem", fontFamily: "'Inter',sans-serif", letterSpacing: "0.14em", fontWeight: 700, padding: "5px 12px", borderRadius: 3 }}>BEFORE</div>
+        <div style={{ position: "absolute", bottom: 14, right: 14, background: "rgba(255,255,255,0.92)", color: "#2a2218", fontSize: "0.6rem", fontFamily: "'Inter',sans-serif", letterSpacing: "0.14em", fontWeight: 700, padding: "5px 12px", borderRadius: 3 }}>AFTER</div>
+        <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: 1, background: "rgba(255,255,255,0.7)", transform: "translateX(-50%)", pointerEvents: "none" }}>
+          <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 32, height: 32, borderRadius: "50%", background: "rgba(255,255,255,0.95)", border: "1px solid rgba(0,0,0,0.1)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.12)" }}>
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+              <path d="M5 8l-3-3m0 0l3-3M2 5h12M11 8l3 3m0 0l-3 3M14 11H2" stroke="#5a4a3a" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -65,51 +64,67 @@ function BeforeAfterSlider({ before, after }) {
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
+  const [caseIndex] = useState(() => Math.floor(Math.random() * CASES.length));
+  const selectedCase = CASES[caseIndex];
+
   useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
 
   return (
-    <section id="hero" style={{ minHeight: "100vh", background: "#FAFAF8", paddingTop: 64, fontFamily: "'Inter', sans-serif" }}>
-      {/* Header */}
-      <div style={{ textAlign: "center", padding: "4rem clamp(1.5rem,5vw,4rem) 2rem", opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: "all 0.8s ease" }}>
-        <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.7rem", letterSpacing: "0.2em", color: "#8B6E47", marginBottom: "1.25rem", fontWeight: 600, textTransform: "uppercase" }}>
-          Aesthetic Surgery Visualization
-        </p>
-        <h1 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400, fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1.15, color: "#2a2218", margin: 0 }}>
-          Visualize Your
-        </h1>
-        <h1 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400, fontStyle: "italic", fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1.15, color: "#8B6E47", margin: 0, marginBottom: "1.5rem" }}>
-          Transformation
-        </h1>
-        <p style={{ fontSize: "1rem", color: "#6b6b6b", maxWidth: 480, margin: "0 auto", lineHeight: 1.7 }}>
-          Experience the art of subtle enhancement. Our AI-powered simulation helps you visualize potential results.
-        </p>
-      </div>
-
-      {/* Before/After Cases */}
-      <div style={{ maxWidth: 620, margin: "0 auto", padding: "0 clamp(1.5rem,5vw,4rem) 4rem" }}>
-        {BEFORE_AFTER_CASES.map((c, i) => (
-          <div key={i} style={{ marginBottom: "3rem", opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: `all 0.7s ease ${0.2 + i * 0.15}s` }}>
-            <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.65rem", letterSpacing: "0.18em", color: "#8B6E47", fontWeight: 600, marginBottom: "0.75rem", textTransform: "uppercase" }}>{c.label}</p>
-            <BeforeAfterSlider before={c.before} after={c.after} />
+    <section id="hero" style={{ minHeight: "100vh", background: "#FAFAF8", paddingTop: 64, display: "flex", alignItems: "center" }}>
+      <div style={{
+        maxWidth: 1100, margin: "0 auto", padding: "4rem clamp(1.5rem,5vw,4rem)",
+        display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center", width: "100%"
+      }} className="hero-grid">
+        {/* LEFT — opis */}
+        <div style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(24px)", transition: "all 0.9s cubic-bezier(0.16,1,0.3,1)" }}>
+          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: "#8B6E47", marginBottom: "1.5rem", fontWeight: 600, textTransform: "uppercase" }}>
+            AI · Medycyna Estetyczna
+          </p>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400, fontSize: "clamp(2.2rem, 4vw, 3.2rem)", lineHeight: 1.2, color: "#2a2218", margin: "0 0 0.5rem" }}>
+            Visualize Your
+          </h1>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400, fontStyle: "italic", fontSize: "clamp(2.2rem, 4vw, 3.2rem)", lineHeight: 1.2, color: "#8B6E47", margin: "0 0 2rem" }}>
+            Transformation
+          </h1>
+          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "1.05rem", color: "#666", lineHeight: 1.8, marginBottom: "1.5rem", maxWidth: 440 }}>
+            Zastanawiasz się jak będziesz wyglądać po zabiegu? <strong style={{ color: "#5a4a3a", fontWeight: 600 }}>Aisthetic</strong> to narzędzie AI, które pokazuje realistyczny efekt zabiegu estetycznego — zanim podejmiesz jakąkolwiek decyzję.
+          </p>
+          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.95rem", color: "#888", lineHeight: 1.7, marginBottom: "2.5rem", maxWidth: 420 }}>
+            Wgraj swoje zdjęcie, wybierz zabieg i w kilka sekund zobacz swoją transformację. Bezpiecznie, anonimowo, bez rejestracji.
+          </p>
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <button style={{ background: "#5a4a3a", color: "#fff", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "none", cursor: "pointer", transition: "all 0.2s" }}
+              onMouseEnter={e => e.currentTarget.style.background = "#8B6E47"}
+              onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
+              Wypróbuj za darmo
+            </button>
+            <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} style={{ background: "none", color: "#5a4a3a", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "1px solid rgba(139,110,71,0.3)", cursor: "pointer", transition: "all 0.2s" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "#8B6E47"; e.currentTarget.style.color = "#8B6E47"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(139,110,71,0.3)"; e.currentTarget.style.color = "#5a4a3a"; }}>
+              Demo dla gabinetu →
+            </button>
           </div>
-        ))}
-      </div>
+          <div style={{ marginTop: "2.5rem", display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
+            {[["15 000+", "wizualizacji"], ["200+", "gabinetów"], ["22", "zabiegi"]].map(([num, label]) => (
+              <div key={label}>
+                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "1.6rem", fontWeight: 600, color: "#8B6E47" }}>{num}</div>
+                <div style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.75rem", color: "#aaa", letterSpacing: "0.04em" }}>{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-      {/* Try It CTA */}
-      <div id="try-cta" style={{ background: "#f5f5f0", padding: "5rem clamp(1.5rem,5vw,4rem)", textAlign: "center" }}>
-        <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", color: "#8B6E47", fontWeight: 600, marginBottom: "1.5rem", textTransform: "uppercase" }}>Try It Yourself</p>
-        <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(1.75rem,3.5vw,2.5rem)", fontWeight: 400, color: "#2a2218", marginBottom: "1.5rem", lineHeight: 1.3 }}>
-          Curious About Your Results?
-        </h2>
-        <p style={{ fontSize: "1rem", color: "#6b6b6b", maxWidth: 440, margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-          Upload your photo and see a personalized simulation of your potential transformation.
-        </p>
-        <button style={{ background: "#5a4a3a", color: "#fff", padding: "0.875rem 2.25rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.03em", border: "none", cursor: "pointer", transition: "all 0.2s" }}
-          onMouseEnter={e => e.currentTarget.style.background = "#8B6E47"}
-          onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
-          Start Your Simulation
-        </button>
+        {/* RIGHT — transformacja */}
+        <div style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(24px)", transition: "all 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
+          <BeforeAfterSlider before={selectedCase.before} after={selectedCase.after} label={selectedCase.label} />
+          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.7rem", color: "#bbb", textAlign: "center", marginTop: "0.875rem", letterSpacing: "0.08em" }}>↔ Przesuń aby porównać</p>
+        </div>
       </div>
+      <style>{`
+        @media (max-width: 860px) {
+          .hero-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+        }
+      `}</style>
     </section>
   );
 }
