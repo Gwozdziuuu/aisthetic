@@ -5,20 +5,26 @@ Deno.serve(async (req) => {
     const base44 = createClientFromRequest(req);
     const { name, clinic, email, phone, consultations } = await req.json();
 
-    await base44.integrations.Core.SendEmail({
-      to: "kontakt@aisthetic.pl",
-      from_name: "Aisthetic – Formularz Demo",
-      subject: `Nowe zgłoszenie demo: ${clinic || name}`,
-      body: `
-Nowe zgłoszenie z formularza kontaktowego:
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
 
-Imię i nazwisko: ${name}
-Nazwa gabinetu: ${clinic || "—"}
-E-mail: ${email}
-Telefon: ${phone}
-Liczba konsultacji miesięcznie: ${consultations || "—"}
-      `.trim(),
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Aisthetic Formularz <onboarding@resend.dev>",
+        to: ["kontakt@aisthetic.pl"],
+        subject: `Nowe zgłoszenie demo: ${clinic || name}`,
+        text: `Nowe zgłoszenie z formularza kontaktowego:\n\nImię i nazwisko: ${name}\nNazwa gabinetu: ${clinic || "—"}\nE-mail: ${email}\nTelefon: ${phone}\nLiczba konsultacji miesięcznie: ${consultations || "—"}`,
+      }),
     });
+
+    if (!res.ok) {
+      const err = await res.json();
+      return Response.json({ error: err.message }, { status: 500 });
+    }
 
     return Response.json({ success: true });
   } catch (error) {
