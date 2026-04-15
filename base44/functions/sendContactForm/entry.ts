@@ -7,6 +7,9 @@ Deno.serve(async (req) => {
 
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
 
+    // Zapisz zgłoszenie do bazy danych
+    await base44.asServiceRole.entities.LeadForm.create({ name, clinic, email, phone, consultations });
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {

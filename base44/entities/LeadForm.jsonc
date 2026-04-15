@@ -1,0 +1,30 @@
+{
+  "name": "LeadForm",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Imi\u0119 i nazwisko"
+    },
+    "clinic": {
+      "type": "string",
+      "description": "Nazwa gabinetu"
+    },
+    "email": {
+      "type": "string",
+      "description": "Adres e-mail"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Numer telefonu"
+    },
+    "consultations": {
+      "type": "string",
+      "description": "Liczba konsultacji miesi\u0119cznie"
+    }
+  },
+  "required": [
+    "name",
+    "email"
+  ]
+}
