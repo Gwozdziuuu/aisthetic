@@ -25,10 +25,10 @@ const testimonials = [
   },
 ];
 
-function Stars({ count }) {
+function Stars({ count = 0 }) {
   return (
-    <div style={{ display: "flex", gap: 3, marginBottom: "1rem" }}>
-      {Array.from({ length: count }).map((_, i) => (
+    <div style={{ display: "flex", gap: 3, marginBottom: "1rem" }} data-gramm="false">
+      {Array.from({ length: count || 0 }).map((_, i) => (
         <svg key={i} width="13" height="13" viewBox="0 0 14 14" fill="#8B6E47">
           <path d="M7 1l1.5 4H13L9.5 8l1.5 4L7 10 3 12l1.5-4L1 5h4.5z" />
         </svg>
