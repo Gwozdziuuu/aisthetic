@@ -21,41 +21,43 @@ const CASES = [
 
 function BeforeAfterSlider({ before, after, label }) {
   const [pos, setPos] = useState(50);
-  const isDragging = useRef(false);
   const containerRef = useRef(null);
 
-  const updatePos = (clientX) => {
+  const getPos = (clientX) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
     setPos((x / rect.width) * 100);
   };
 
-  useEffect(() => {
-    const onMouseMove = (e) => { if (isDragging.current) updatePos(e.clientX); };
-    const onMouseUp = () => { isDragging.current = false; };
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
-    return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onMouseUp);
-    };
-  }, []);
+  const handlePointerDown = (e) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    getPos(e.clientX);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
+    getPos(e.clientX);
+  };
+
+  const handlePointerUp = (e) => {
+    e.currentTarget.releasePointerCapture(e.pointerId);
+  };
 
   return (
     <div>
       <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.65rem", letterSpacing: "0.18em", color: "#8B6E47", fontWeight: 600, marginBottom: "0.75rem", textTransform: "uppercase" }}>{label}</p>
       <div
         ref={containerRef}
-        style={{ position: "relative", overflow: "hidden", aspectRatio: "4/3", cursor: "ew-resize", userSelect: "none", borderRadius: 8, background: "#f0ede8" }}
-        onMouseDown={e => { isDragging.current = true; updatePos(e.clientX); }}
-        onTouchStart={e => { isDragging.current = true; updatePos(e.touches[0].clientX); }}
-        onTouchMove={e => { if (isDragging.current) { e.preventDefault(); updatePos(e.touches[0].clientX); } }}
-        onTouchEnd={() => { isDragging.current = false; }}
+        style={{ position: "relative", overflow: "hidden", aspectRatio: "4/3", cursor: "ew-resize", userSelect: "none", touchAction: "none", borderRadius: 8, background: "#f0ede8" }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
       >
-        <img src={after} alt="after" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src={after} alt="after" draggable="false" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
-          <img src={before} alt="before" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          <img src={before} alt="before" draggable="false" style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }} />
         </div>
         <div style={{ position: "absolute", bottom: 14, left: 14, background: "rgba(255,255,255,0.92)", color: "#2a2218", fontSize: "0.6rem", fontFamily: "'Inter',sans-serif", letterSpacing: "0.14em", fontWeight: 700, padding: "5px 12px", borderRadius: 3 }}>BEFORE</div>
         <div style={{ position: "absolute", bottom: 14, right: 14, background: "rgba(255,255,255,0.92)", color: "#2a2218", fontSize: "0.6rem", fontFamily: "'Inter',sans-serif", letterSpacing: "0.14em", fontWeight: 700, padding: "5px 12px", borderRadius: 3 }}>AFTER</div>
