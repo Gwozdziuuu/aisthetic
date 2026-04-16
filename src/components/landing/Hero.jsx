@@ -98,17 +98,17 @@ export default function Hero() {
             onMouseLeave={(e) => e.currentTarget.style.background = "#5a4a3a"}>
               Zamów Bezpłatne Demo
             </button>
-            <a href="https://pro.aisthetic.pl/" target="_blank" rel="noopener noreferrer" style={{ background: "none", color: "#5a4a3a", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "1px solid rgba(139,110,71,0.3)", cursor: "pointer", transition: "all 0.2s", display: "inline-block", textDecoration: "none" }}
-            onMouseEnter={(e) => {e.currentTarget.style.borderColor = "#8B6E47";e.currentTarget.style.color = "#8B6E47";}}
-            onMouseLeave={(e) => {e.currentTarget.style.borderColor = "rgba(139,110,71,0.3)";e.currentTarget.style.color = "#5a4a3a";}} className=" hidden">
-              Przejdź do Założenia Gabinetu →
-            </a>
+            
+
+
+
+            
           </div>
           <div style={{ marginTop: "2.5rem", display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
             {[["15 000+", "wizualizacji"], ["200+", "gabinetów"], ["22", "zabiegi"]].map(([num, label]) =>
             <div key={label}>
-                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "1.6rem", fontWeight: 600, color: "#8B6E47" }} className=" hidden">{num}</div>
-                <div style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.75rem", color: "#aaa", letterSpacing: "0.04em" }} className=" hidden">{label}</div>
+                
+                
               </div>
             )}
           </div>
