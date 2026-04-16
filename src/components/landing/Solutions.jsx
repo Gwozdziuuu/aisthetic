@@ -25,7 +25,7 @@ export default function Solutions() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }} className="solutions-grid">
           {/* B2C */}
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateX(-30px)", transition: "all 0.7s ease 0.1s" }}>
-            <div style={{ background: "#fff", border: "1px solid rgba(139,110,71,0.15)", borderRadius: 12, padding: "2.5rem", height: "100%" }}>
+            <div style={{ background: "#fff", border: "1px solid rgba(139,110,71,0.15)", borderRadius: 12, padding: "2.5rem", height: "100%", display: "flex", flexDirection: "column" }}>
               <div style={{ display: "inline-flex", background: "rgba(139,110,71,0.08)", borderRadius: 20, padding: "4px 14px", marginBottom: "1.5rem" }}>
                 <span style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.65rem", letterSpacing: "0.15em", color: "#8B6E47", fontWeight: 600, textTransform: "uppercase" }}>{s.b2cBadge}</span>
               </div>
@@ -33,7 +33,7 @@ export default function Solutions() {
                 {s.b2cTitle1}<br /><em>{s.b2cTitle2}</em>
               </h3>
               <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.9rem", color: "#888", lineHeight: 1.8, marginBottom: "2rem" }}>{s.b2cDesc}</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2.25rem" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2.25rem", flexGrow: 1 }}>
                 {s.b2cFeatures.map((f, i) => (
                   <div key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
                     <CheckIcon />
@@ -41,16 +41,14 @@ export default function Solutions() {
                   </div>
                 ))}
               </div>
-              <button style={{ background: "#5a4a3a", color: "#fff", padding: "0.875rem 2rem", borderRadius: 6, fontSize: "0.8rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.05em", border: "none", cursor: "pointer", width: "100%", transition: "all 0.2s" }}
-                onMouseEnter={e => e.currentTarget.style.background = "#8B6E47"}
-                onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
+              <button disabled style={{ background: "#ccc", color: "#fff", padding: "0.875rem 2rem", borderRadius: 6, fontSize: "0.8rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.05em", border: "none", cursor: "default", width: "100%", transition: "all 0.2s" }}>
                 {s.b2cCta}
               </button>
             </div>
           </div>
           {/* B2B */}
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "none" : "translateX(30px)", transition: "all 0.7s ease 0.2s" }}>
-            <div style={{ background: "#fff", border: "1px solid rgba(139,110,71,0.15)", borderRadius: 12, padding: "2.5rem", height: "100%" }}>
+            <div style={{ background: "#fff", border: "1px solid rgba(139,110,71,0.15)", borderRadius: 12, padding: "2.5rem", height: "100%", display: "flex", flexDirection: "column" }}>
               <div style={{ display: "inline-flex", background: "rgba(139,110,71,0.08)", borderRadius: 20, padding: "4px 14px", marginBottom: "1.5rem" }}>
                 <span style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.65rem", letterSpacing: "0.15em", color: "#8B6E47", fontWeight: 600, textTransform: "uppercase" }}>{s.b2bBadge}</span>
               </div>
@@ -58,7 +56,7 @@ export default function Solutions() {
                 {s.b2bTitle1}<br /><em>{s.b2bTitle2}</em><br />{s.b2bTitle3}
               </h3>
               <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.9rem", color: "#888", lineHeight: 1.8, marginBottom: "2rem" }}>{s.b2bDesc}</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2.25rem" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2.25rem", flexGrow: 1 }}>
                 {s.b2bFeatures.map((f, i) => (
                   <div key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
                     <CheckIcon />
