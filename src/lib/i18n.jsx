@@ -12,8 +12,8 @@ export const translations = {
     },
     hero: {
       badge: "AI · Medycyna Estetyczna",
-      heading1: "Visualize Your",
-      heading2: "Transformation",
+      heading1: "Zwizualizuj swoją",
+      heading2: "Transformację",
       desc1: "Zastanawiasz się jak będziesz wyglądać po zabiegu?",
       desc1bold: "Aisthetic",
       desc1rest: "to narzędzie AI, które pokazuje realistyczny efekt zabiegu estetycznego — zanim podejmiesz jakąkolwiek decyzję.",
