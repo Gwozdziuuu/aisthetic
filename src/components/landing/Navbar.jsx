@@ -36,46 +36,41 @@ export default function Navbar() {
       fontFamily: "'Inter', sans-serif"
     }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-        {/* Left: hamburger + lang switcher */}
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "none", border: "none", color: "#5a4a3a", cursor: "pointer", padding: 4, display: "flex", alignItems: "center", gap: 8 }}>
-            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <line x1="2" y1="5" x2="18" y2="5" />
-              <line x1="2" y1="10" x2="18" y2="10" />
-              <line x1="2" y1="15" x2="18" y2="15" />
-            </svg>
-            <span style={{ fontSize: "0.875rem", fontWeight: 500, letterSpacing: "0.02em" }}>{t.nav.menu}</span>
-          </button>
-
-          {/* Language switcher */}
-          <div style={{ display: "flex", alignItems: "center", gap: 0, border: "1px solid rgba(139,110,71,0.25)", borderRadius: 4, overflow: "hidden" }}>
-            {["pl", "en"].map((l) => (
-              <button key={l} onClick={() => setLang(l)} style={{
-                background: lang === l ? "#5a4a3a" : "transparent",
-                color: lang === l ? "#fff" : "#8B6E47",
-                border: "none",
-                padding: "3px 10px",
-                fontSize: "0.7rem",
-                fontFamily: "'Inter',sans-serif",
-                fontWeight: 600,
-                letterSpacing: "0.08em",
-                cursor: "pointer",
-                textTransform: "uppercase",
-                transition: "all 0.2s",
-              }}>
-                {l}
-              </button>
-            ))}
-          </div>
-        </div>
+        {/* Left: hamburger */}
+        <button onClick={() => setMenuOpen(!menuOpen)} style={{ background: "none", border: "none", color: "#5a4a3a", cursor: "pointer", padding: 4, display: "flex", alignItems: "center", gap: 8 }}>
+          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <line x1="2" y1="5" x2="18" y2="5" />
+            <line x1="2" y1="10" x2="18" y2="10" />
+            <line x1="2" y1="15" x2="18" y2="15" />
+          </svg>
+          <span style={{ fontSize: "0.875rem", fontWeight: 500, letterSpacing: "0.02em" }}>{t.nav.menu}</span>
+        </button>
 
         {/* Logo center */}
         <div onClick={() => scrollTo("hero")} style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", cursor: "pointer" }}>
           <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699b669890489dbd9dbdfc53/36ec17096_logo_aisthetic.png" alt="AIsthetic" style={{ height: 92, objectFit: "contain" }} />
         </div>
 
-        {/* Right: empty spacer to keep logo centered */}
-        <div style={{ width: 120 }} />
+        {/* Right: language switcher */}
+        <div style={{ display: "flex", alignItems: "center", gap: 0, border: "1px solid rgba(139,110,71,0.25)", borderRadius: 4, overflow: "hidden" }}>
+          {["pl", "en"].map((l) => (
+            <button key={l} onClick={() => setLang(l)} style={{
+              background: lang === l ? "#5a4a3a" : "transparent",
+              color: lang === l ? "#fff" : "#8B6E47",
+              border: "none",
+              padding: "3px 10px",
+              fontSize: "0.7rem",
+              fontFamily: "'Inter',sans-serif",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              cursor: "pointer",
+              textTransform: "uppercase",
+              transition: "all 0.2s",
+            }}>
+              {l}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Dropdown menu */}
