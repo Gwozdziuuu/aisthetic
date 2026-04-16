@@ -115,14 +115,7 @@ export default function Hero() {
               {t.hero.ctaSecondary}
             </a>
           </div>
-          <div style={{ marginTop: "2.5rem", display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
-            {[["15 000+", t.hero.stat1], ["200+", t.hero.stat2], ["22", t.hero.stat3]].map(([num, label]) => (
-              <div key={label}>
-                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "1.6rem", fontWeight: 600, color: "#8B6E47" }}>{num}</div>
-                <div style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.75rem", color: "#aaa", letterSpacing: "0.04em" }}>{label}</div>
-              </div>
-            ))}
-          </div>
+
         </div>
 
         <div style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(24px)", transition: "all 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s" }}>
