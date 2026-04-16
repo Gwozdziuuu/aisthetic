@@ -153,7 +153,7 @@ export default function Rodo() {
                   {[
                     ["🔍 Prawo dostępu (art. 15 RODO)", "Prawo do uzyskania informacji, czy przetwarzamy Państwa dane, oraz do uzyskania ich kopii."],
                     ["✏️ Prawo do sprostowania (art. 16 RODO)", "Prawo do żądania poprawienia nieprawidłowych lub uzupełnienia niekompletnych danych."],
-                    ["🗑️ Prawo do usunięcia (art. 17 RODO)", "Prawo do żądania usunięcia danych („prawo do bycia zapomnianym")."],
+                    ["🗑️ Prawo do usunięcia (art. 17 RODO)", "Prawo do żądania usunięcia danych (prawo do bycia zapomnianym)."],
                     ["⏸️ Prawo do ograniczenia przetwarzania (art. 18 RODO)", "Prawo do żądania ograniczenia przetwarzania w określonych przypadkach."],
                     ["📦 Prawo do przenoszenia danych (art. 20 RODO)", "Prawo do otrzymania danych w ustrukturyzowanym formacie i przekazania ich innemu administratorowi."],
                     ["✋ Prawo do sprzeciwu (art. 21 RODO)", "Prawo do wniesienia sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie."],
