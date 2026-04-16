@@ -17,9 +17,7 @@ export default function CTASection() {
               {c.b2cTitle1}<br /><em style={{ color: "#8B6E47" }}>{c.b2cTitle2}</em>
             </h3>
             <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.9rem", color: "#888", marginBottom: "2rem", lineHeight: 1.7 }}>{c.b2cDesc}</p>
-            <button style={{ background: "#5a4a3a", color: "#fff", padding: "0.875rem 2.25rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "none", cursor: "pointer", transition: "all 0.2s" }}
-              onMouseEnter={e => e.currentTarget.style.background = "#8B6E47"}
-              onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
+            <button disabled style={{ background: "#ccc", color: "#fff", padding: "0.875rem 2.25rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "none", cursor: "default", transition: "all 0.2s" }}>
               {c.b2cCta}
             </button>
           </div>
