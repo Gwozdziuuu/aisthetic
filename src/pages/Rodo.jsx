@@ -56,7 +56,7 @@ export default function Rodo() {
           <Section title="1. Administrator Danych Osobowych">
             <P>Administratorem Państwa danych osobowych jest:</P>
             <P><strong style={{ color: "#2a2218" }}>Etherna Sp. z o.o.</strong><br />ul. Pestalozziego 4/37<br />85-095 Bydgoszcz</P>
-            <P>Kontakt w sprawach dotyczących ochrony danych osobowych:<br />📧 E-mail: <a href="mailto:rodo@aisthetic.pl" style={{ color: "#8B6E47", textDecoration: "none" }}>rodo@aisthetic.pl</a></P>
+            <P>Kontakt w sprawach dotyczących ochrony danych osobowych:<br />📧 E-mail: <a href="mailto:kontakt@aisthetic.pl" style={{ color: "#8B6E47", textDecoration: "none" }}>kontakt@aisthetic.pl</a></P>
           </Section>
 
           <Section title="2. Definicje">
@@ -168,7 +168,7 @@ export default function Rodo() {
                 </tbody>
               </table>
             </div>
-            <P>Aby skorzystać z powyższych praw, prosimy o kontakt: <a href="mailto:rodo@aisthetic.pl" style={{ color: "#8B6E47", textDecoration: "none" }}>rodo@aisthetic.pl</a></P>
+            <P>Aby skorzystać z powyższych praw, prosimy o kontakt: <a href="mailto:kontakt@aisthetic.pl" style={{ color: "#8B6E47", textDecoration: "none" }}>kontakt@aisthetic.pl</a></P>
           </Section>
 
           <Section title="8. Bezpieczeństwo danych">
@@ -235,7 +235,7 @@ export default function Rodo() {
           </Section>
 
           <Section title="12. Kontakt">
-            <P><strong style={{ color: "#2a2218" }}>Etherna Sp. z o.o.</strong><br />ul. Pestalozziego 4/37, Bydgoszcz<br />📧 <a href="mailto:rodo@aisthetic.pl" style={{ color: "#8B6E47", textDecoration: "none" }}>rodo@aisthetic.pl</a></P>
+            <P><strong style={{ color: "#2a2218" }}>Etherna Sp. z o.o.</strong><br />ul. Pestalozziego 4/37, Bydgoszcz<br />📧 <a href="mailto:kontakt@aisthetic.pl" style={{ color: "#8B6E47", textDecoration: "none" }}>kontakt@aisthetic.pl</a></P>
           </Section>
         </div>
       </section>
