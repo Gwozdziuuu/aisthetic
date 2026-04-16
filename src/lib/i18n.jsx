@@ -142,7 +142,7 @@ export const translations = {
     footer: {
       tagline: "AI wizualizacja efektów zabiegów medycyny estetycznej. Twój wygląd. Twoja decyzja.",
       companyLabel: "Firma",
-      companyLinks: ["O nas", "Blog", "Kontakt"],
+      companyLinks: ["O nas", "Kontakt"],
       legalLabel: "Prawne",
       legalLinks: ["RODO"],
       copy: "© 2025 Aisthetic. Wszelkie prawa zastrzeżone.",
@@ -291,7 +291,7 @@ export const translations = {
     footer: {
       tagline: "AI visualization of aesthetic medicine treatment results. Your look. Your decision.",
       companyLabel: "Company",
-      companyLinks: ["About Us", "Blog", "Contact"],
+      companyLinks: ["About Us", "Contact"],
       legalLabel: "Legal",
       legalLinks: ["GDPR"],
       copy: "© 2025 Aisthetic. All rights reserved.",
