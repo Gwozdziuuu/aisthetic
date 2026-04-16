@@ -1,22 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 
 const CASES = [
-  {
-    label: "LOWER EYELID BLEPHAROPLASTY",
-    before: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/e51368a7e_1g.png",
-    after: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/114888416_1gPrim.png",
-  },
-  {
-    label: "UPPER EYELID BLEPHAROPLASTY",
-    before: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/92c32a516_2g.png",
-    after: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/22476c735_2gPrim.png",
-  },
-  {
-    label: "UPPER AND LOWER EYELID BLEPHAROPLASTY",
-    before: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/84c55c68e_3g.png",
-    after: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/a77a871d1_3gPrim.png",
-  },
-];
+{
+  label: "LOWER EYELID BLEPHAROPLASTY",
+  before: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/e51368a7e_1g.png",
+  after: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/114888416_1gPrim.png"
+},
+{
+  label: "UPPER EYELID BLEPHAROPLASTY",
+  before: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/92c32a516_2g.png",
+  after: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/22476c735_2gPrim.png"
+},
+{
+  label: "UPPER AND LOWER EYELID BLEPHAROPLASTY",
+  before: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/84c55c68e_3g.png",
+  after: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697534f99ecf59eca26be2bc/a77a871d1_3gPrim.png"
+}];
+
 
 function BeforeAfterSlider({ before, after, label }) {
   const [pos, setPos] = useState(50);
@@ -27,7 +27,7 @@ function BeforeAfterSlider({ before, after, label }) {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-    setPos((x / rect.width) * 100);
+    setPos(x / rect.width * 100);
   };
 
   return (
@@ -36,14 +36,14 @@ function BeforeAfterSlider({ before, after, label }) {
       <div
         ref={containerRef}
         style={{ position: "relative", overflow: "hidden", aspectRatio: "4/3", cursor: "ew-resize", userSelect: "none", borderRadius: 8, background: "#f0ede8" }}
-        onMouseDown={e => { isDragging.current = true; updatePos(e.clientX); }}
-        onMouseMove={e => { if (isDragging.current) updatePos(e.clientX); }}
+        onMouseDown={(e) => {isDragging.current = true;updatePos(e.clientX);}}
+        onMouseMove={(e) => {if (isDragging.current) updatePos(e.clientX);}}
         onMouseUp={() => isDragging.current = false}
         onMouseLeave={() => isDragging.current = false}
-        onTouchStart={e => { isDragging.current = true; updatePos(e.touches[0].clientX); }}
-        onTouchMove={e => { if (isDragging.current) { e.preventDefault(); updatePos(e.touches[0].clientX); } }}
-        onTouchEnd={() => isDragging.current = false}
-      >
+        onTouchStart={(e) => {isDragging.current = true;updatePos(e.touches[0].clientX);}}
+        onTouchMove={(e) => {if (isDragging.current) {e.preventDefault();updatePos(e.touches[0].clientX);}}}
+        onTouchEnd={() => isDragging.current = false}>
+        
         <img src={after} alt="after" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
           <img src={before} alt="before" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -53,13 +53,13 @@ function BeforeAfterSlider({ before, after, label }) {
         <div style={{ position: "absolute", top: 0, bottom: 0, left: `${pos}%`, width: 1, background: "rgba(255,255,255,0.7)", transform: "translateX(-50%)", pointerEvents: "none" }}>
           <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 32, height: 32, borderRadius: "50%", background: "rgba(255,255,255,0.95)", border: "1px solid rgba(0,0,0,0.1)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.12)" }}>
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-              <path d="M5 8l-3-3m0 0l3-3M2 5h12M11 8l3 3m0 0l-3 3M14 11H2" stroke="#5a4a3a" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M5 8l-3-3m0 0l3-3M2 5h12M11 8l3 3m0 0l-3 3M14 11H2" stroke="#5a4a3a" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 }
 
 export default function Hero() {
@@ -67,7 +67,7 @@ export default function Hero() {
   const [caseIndex] = useState(() => Math.floor(Math.random() * CASES.length));
   const selectedCase = CASES[caseIndex];
 
-  useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
+  useEffect(() => {setTimeout(() => setVisible(true), 100);}, []);
 
   return (
     <section id="hero" style={{ minHeight: "100vh", background: "#FAFAF8", paddingTop: 64, display: "flex", alignItems: "center" }}>
@@ -94,23 +94,23 @@ export default function Hero() {
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <button onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} style={{ background: "#5a4a3a", color: "#fff", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "none", cursor: "pointer", transition: "all 0.2s" }}
-              onMouseEnter={e => e.currentTarget.style.background = "#8B6E47"}
-              onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
+            onMouseEnter={(e) => e.currentTarget.style.background = "#8B6E47"}
+            onMouseLeave={(e) => e.currentTarget.style.background = "#5a4a3a"}>
               Zamów Bezpłatne Demo
             </button>
             <a href="https://pro.aisthetic.pl/" target="_blank" rel="noopener noreferrer" style={{ background: "none", color: "#5a4a3a", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "1px solid rgba(139,110,71,0.3)", cursor: "pointer", transition: "all 0.2s", display: "inline-block", textDecoration: "none" }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "#8B6E47"; e.currentTarget.style.color = "#8B6E47"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(139,110,71,0.3)"; e.currentTarget.style.color = "#5a4a3a"; }}>
+            onMouseEnter={(e) => {e.currentTarget.style.borderColor = "#8B6E47";e.currentTarget.style.color = "#8B6E47";}}
+            onMouseLeave={(e) => {e.currentTarget.style.borderColor = "rgba(139,110,71,0.3)";e.currentTarget.style.color = "#5a4a3a";}} className=" hidden">
               Przejdź do Założenia Gabinetu →
             </a>
           </div>
           <div style={{ marginTop: "2.5rem", display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
-            {[["15 000+", "wizualizacji"], ["200+", "gabinetów"], ["22", "zabiegi"]].map(([num, label]) => (
-              <div key={label}>
-                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "1.6rem", fontWeight: 600, color: "#8B6E47" }}>{num}</div>
-                <div style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.75rem", color: "#aaa", letterSpacing: "0.04em" }}>{label}</div>
+            {[["15 000+", "wizualizacji"], ["200+", "gabinetów"], ["22", "zabiegi"]].map(([num, label]) =>
+            <div key={label}>
+                <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "1.6rem", fontWeight: 600, color: "#8B6E47" }} className=" hidden">{num}</div>
+                <div style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.75rem", color: "#aaa", letterSpacing: "0.04em" }} className=" hidden">{label}</div>
               </div>
-            ))}
+            )}
           </div>
         </div>
 
@@ -125,6 +125,6 @@ export default function Hero() {
           .hero-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
         }
       `}</style>
-    </section>
-  );
+    </section>);
+
 }
