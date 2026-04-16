@@ -114,11 +114,7 @@ export default function Hero() {
               onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
               {t.hero.ctaPrimary}
             </button>
-            <a href="https://pro.aisthetic.pl/" target="_blank" rel="noopener noreferrer" style={{ background: "none", color: "#5a4a3a", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "1px solid rgba(139,110,71,0.3)", cursor: "pointer", transition: "all 0.2s", display: "inline-block", textDecoration: "none" }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "#8B6E47"; e.currentTarget.style.color = "#8B6E47"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(139,110,71,0.3)"; e.currentTarget.style.color = "#5a4a3a"; }}>
-              {t.hero.ctaSecondary}
-            </a>
+
           </div>
         </div>
 
