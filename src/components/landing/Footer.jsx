@@ -37,13 +37,16 @@ export default function Footer() {
           </div>
           <div>
             <p style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#bbb", marginBottom: "1.25rem", fontWeight: 600, textTransform: "uppercase" }}>{f.legalLabel}</p>
-            {f.legalLinks.map((link) => (
-              <div key={link} style={{ marginBottom: "0.75rem" }}>
-                <a href="#" style={{ fontSize: "0.875rem", color: "#888", textDecoration: "none", transition: "color 0.2s" }}
-                  onMouseEnter={e => e.target.style.color = "#8B6E47"}
-                  onMouseLeave={e => e.target.style.color = "#888"}>{link}</a>
-              </div>
-            ))}
+            {f.legalLinks.map((link) => {
+              const href = (link === "RODO" || link === "GDPR") ? "/rodo" : "#";
+              return (
+                <div key={link} style={{ marginBottom: "0.75rem" }}>
+                  <a href={href} style={{ fontSize: "0.875rem", color: "#888", textDecoration: "none", transition: "color 0.2s" }}
+                    onMouseEnter={e => e.target.style.color = "#8B6E47"}
+                    onMouseLeave={e => e.target.style.color = "#888"}>{link}</a>
+                </div>
+              );
+            })}
           </div>
         </div>
         <div style={{ borderTop: "1px solid rgba(139,110,71,0.1)", paddingTop: "2rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
