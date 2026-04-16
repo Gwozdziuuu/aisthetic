@@ -40,7 +40,7 @@ export const translations = {
         },
         {
           title: "Zobacz efekt AI",
-          desc: "W mniej niż 10 sekund otrzymujesz realistyczną wizualizację efektów zabiegu na Twoim własnym zdjęciu.",
+          desc: "W mniej niż 30 sekund otrzymujesz realistyczną wizualizację efektów zabiegu na Twoim własnym zdjęciu.",
         },
       ],
     },
@@ -54,7 +54,7 @@ export const translations = {
       b2cFeatures: [
         "Bezpieczna i anonimowa — zdjęcia nie są przechowywane",
         "Ponad 20 dostępnych zabiegów estetycznych",
-        "Wynik gotowy w mniej niż 10 sekund",
+        "Wynik gotowy w mniej niż 30 sekund",
         "Bez rejestracji — zacznij od razu",
         "Porównanie before/after z suwakiem",
       ],
@@ -189,7 +189,7 @@ export const translations = {
         },
         {
           title: "See the AI result",
-          desc: "In less than 10 seconds, you receive a realistic visualization of the treatment effects on your own photo.",
+          desc: "In less than 30 seconds, you receive a realistic visualization of the treatment effects on your own photo.",
         },
       ],
     },
@@ -203,7 +203,7 @@ export const translations = {
       b2cFeatures: [
         "Safe and anonymous — photos are not stored",
         "Over 20 aesthetic treatments available",
-        "Result ready in less than 10 seconds",
+        "Result ready in less than 30 seconds",
         "No registration — start immediately",
         "Before/after comparison with slider",
       ],
