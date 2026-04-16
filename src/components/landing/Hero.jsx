@@ -31,6 +31,17 @@ function BeforeAfterSlider({ before, after, label }) {
     setPos((x / rect.width) * 100);
   };
 
+  useEffect(() => {
+    const onMouseMove = (e) => { if (isDragging.current) updatePos(e.clientX); };
+    const onMouseUp = () => { isDragging.current = false; };
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, []);
+
   return (
     <div>
       <p style={{ fontFamily: "'Inter',sans-serif", fontSize: "0.65rem", letterSpacing: "0.18em", color: "#8B6E47", fontWeight: 600, marginBottom: "0.75rem", textTransform: "uppercase" }}>{label}</p>
@@ -38,12 +49,9 @@ function BeforeAfterSlider({ before, after, label }) {
         ref={containerRef}
         style={{ position: "relative", overflow: "hidden", aspectRatio: "4/3", cursor: "ew-resize", userSelect: "none", borderRadius: 8, background: "#f0ede8" }}
         onMouseDown={e => { isDragging.current = true; updatePos(e.clientX); }}
-        onMouseMove={e => { if (isDragging.current) updatePos(e.clientX); }}
-        onMouseUp={() => isDragging.current = false}
-        onMouseLeave={() => isDragging.current = false}
         onTouchStart={e => { isDragging.current = true; updatePos(e.touches[0].clientX); }}
         onTouchMove={e => { if (isDragging.current) { e.preventDefault(); updatePos(e.touches[0].clientX); } }}
-        onTouchEnd={() => isDragging.current = false}
+        onTouchEnd={() => { isDragging.current = false; }}
       >
         <img src={after} alt="after" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         <div style={{ position: "absolute", inset: 0, clipPath: `inset(0 ${100 - pos}% 0 0)` }}>
