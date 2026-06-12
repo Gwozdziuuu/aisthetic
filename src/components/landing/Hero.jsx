@@ -114,7 +114,11 @@ export default function Hero() {
               onMouseLeave={e => e.currentTarget.style.background = "#5a4a3a"}>
               {t.hero.ctaPrimary}
             </button>
-
+            <a href="https://pro.aisthetic.pl/Home" target="_blank" rel="noopener noreferrer" style={{ background: "#f0ede8", color: "#5a4a3a", padding: "0.9rem 2rem", borderRadius: 6, fontSize: "0.875rem", fontFamily: "'Inter',sans-serif", fontWeight: 500, letterSpacing: "0.04em", border: "1px solid #d4cec5", cursor: "pointer", transition: "all 0.2s", textDecoration: "none", display: "inline-block" }}
+              onMouseEnter={e => { e.currentTarget.style.background = "#e5dcd2"; e.currentTarget.style.borderColor = "#c5bfb6"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "#f0ede8"; e.currentTarget.style.borderColor = "#d4cec5"; }}>
+              Załóż gabinet
+            </a>
           </div>
         </div>
 
