@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Rodo from './pages/Rodo';
 import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import { LangProvider } from '@/lib/i18n';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
@@ -67,6 +68,7 @@ const AuthenticatedApp = () => {
       <Route path="/rodo" element={<LayoutWrapper currentPageName="rodo"><Rodo /></LayoutWrapper>} />
       <Route path="/o-nas" element={<LayoutWrapper currentPageName="o-nas"><About /></LayoutWrapper>} />
       <Route path="/polityka-prywatnosci" element={<LayoutWrapper currentPageName="polityka-prywatnosci"><PrivacyPolicy /></LayoutWrapper>} />
+      <Route path="/warunki-korzystania" element={<LayoutWrapper currentPageName="warunki-korzystania"><TermsOfService /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

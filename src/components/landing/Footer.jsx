@@ -29,7 +29,7 @@ export default function Footer() {
           <div>
             <p style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#bbb", marginBottom: "1.25rem", fontWeight: 600, textTransform: "uppercase" }}>{f.legalLabel}</p>
             {f.legalLinks.map((link) => {
-              const href = (link === "RODO" || link === "GDPR") ? "/rodo" : (link === "Polityka Prywatności" || link === "Privacy Policy") ? "/polityka-prywatnosci" : "#";
+              const href = (link === "RODO" || link === "GDPR") ? "/rodo" : (link === "Polityka Prywatności" || link === "Privacy Policy") ? "/polityka-prywatnosci" : (link === "Warunki Korzystania" || link === "Terms of Service") ? "/warunki-korzystania" : "#";
               return (
                 <div key={link} style={{ marginBottom: "0.75rem" }}>
                   <a href={href} style={{ fontSize: "0.875rem", color: "#888", textDecoration: "none", transition: "color 0.2s" }}
