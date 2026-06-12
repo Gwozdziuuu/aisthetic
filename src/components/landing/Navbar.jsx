@@ -21,7 +21,6 @@ export default function Navbar() {
   const navLinks = [
     [t.nav.howItWorks, "how-it-works"],
     [t.nav.solutions, "solutions"],
-    [t.nav.testimonials, "testimonials"],
     [t.nav.treatments, "treatments"],
     [t.nav.contact, "contact"],
   ];
